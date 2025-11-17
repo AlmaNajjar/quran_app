@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/features/splash/presentation/pages/splash_page.dart';
-import 'package:quran_app/features/splash/presentation/pages/splash_page.dart'; // ← ضيفي هذا لأنو ملف السبلاتش موجود عندك
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'app_routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rahma App',
       theme: ThemeData(useMaterial3: true),
-      home: const SplashView(),
+      onGenerateRoute: AppRoutes.onGenerate,
+      initialRoute: AppRoutes.splash,
     );
   }
 }
