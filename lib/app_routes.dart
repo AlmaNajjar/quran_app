@@ -15,13 +15,12 @@ class AppRoutes {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashView());
 
-   /*   case login:
+      /*   case login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
 
       case signup:
         return MaterialPageRoute(builder: (_) => const SignupPage());
 */
-      
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());

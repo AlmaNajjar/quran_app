@@ -9,10 +9,9 @@ class SplashNotifier extends StateNotifier<bool> {
   SplashNotifier() : super(false);
 
   Future<void> startSplash(BuildContext context) async {
-    await Future.delayed(const Duration(seconds: 3)); // مدة الظهور
+    await Future.delayed(const Duration(seconds: 3));
     state = true;
 
-    // بعدها انتقلي مثلاً إلى صفحة البداية
     Navigator.pushReplacementNamed(context, '/home');
   }
 }

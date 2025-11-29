@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'app_routes.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/features/auth/presentation/pages/login_page.dart';
+
+import 'core/providers/goal_provider.dart';
+import 'features/splash/presentation/pages/splash_page.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,12 +16,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Rahma App',
-      theme: ThemeData(useMaterial3: true),
-      onGenerateRoute: AppRoutes.onGenerate,
-      initialRoute: AppRoutes.splash,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => GoalProvider())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'تطبيق القرآن',
+        locale: const Locale('ar'),
+        supportedLocales: const [Locale('ar'), Locale('en')],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        home: LoginScreen(),
+      ),
     );
   }
 }
