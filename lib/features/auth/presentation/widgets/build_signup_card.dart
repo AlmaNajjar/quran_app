@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/features/auth/presentation/pages/login_page.dart';
 import 'package:quran_app/features/auth/presentation/pages/signup_page.dart';
 import 'dart:ui';
 
 import 'package:quran_app/features/auth/presentation/widgets/build_input_field.dart';
 import 'package:quran_app/features/auth/presentation/widgets/custom_eleveted_button.dart';
 
-class BuildLoginCard extends StatelessWidget {
-  BuildLoginCard({super.key});
+class BuildSignupCard extends StatelessWidget {
+  BuildSignupCard({super.key});
   Color accentColor = Color(0xFFFFCC80); // ذهبي هادئ
 
   @override
@@ -31,7 +32,7 @@ class BuildLoginCard extends StatelessWidget {
             children: [
               // الشعار والعنوان
               const Text(
-                'تسجيل دخول',
+                'انشاء حساب',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -40,7 +41,12 @@ class BuildLoginCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-
+              BuildInputField(
+                hintText: 'الاسم',
+                icon: Icons.person_2_outlined,
+                iconColor: Colors.amber.shade700,
+              ),
+              const SizedBox(height: 16),
               // حقل البريد الإلكتروني
               BuildInputField(
                 hintText: 'البريدالالكتروني',
@@ -57,28 +63,19 @@ class BuildLoginCard extends StatelessWidget {
                 iconColor: Colors.amber.shade700,
               ),
               const SizedBox(height: 24),
-              CustomElevetedButton(text: 'تسجيل دخول'),
+              CustomElevetedButton(text: 'انشاء حساب'),
 
               // زر تسجيل الدخول
               const SizedBox(height: 20),
 
               // نسيت كلمة المرور
-              TextButton(
-                onPressed: () {
-                  // TODO: إضافة منطق نسيت كلمة المرور
-                },
-                child: Text(
-                  'نسيت كلمة المرور؟',
-                  style: TextStyle(color: Colors.amber.shade700),
-                ),
-              ),
 
               // الانتقال للتسجيل
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    'لا تملك حساباً؟',
+                    'أمتلك حساب',
                     style: TextStyle(color: Color.fromARGB(213, 255, 255, 255)),
                     textDirection: TextDirection.rtl,
                   ),
@@ -86,11 +83,11 @@ class BuildLoginCard extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignupScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                     child: const Text(
-                      'سجّل الآن',
+                      'سجّل دخول',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
